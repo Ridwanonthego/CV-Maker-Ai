@@ -9,6 +9,7 @@ import { BestPracticesModal } from './components/BestPracticesModal';
 import { RatingModal } from './components/RatingModal';
 import { LogPanel } from './components/LogPanel';
 import { TipsOverlay } from './components/TipsOverlay';
+import { ApiKeyModal } from './components/ApiKeyModal';
 import html2canvas from 'html2canvas';
 
 const TailwindSafelist: React.FC = () => {
@@ -56,6 +57,7 @@ function App() {
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [showTips, setShowTips] = useState(true);
   const [didGenerate, setDidGenerate] = useState(false);
+  const [isApiKeyModalOpen, setIsApiKeyModalOpen] = useState(false);
 
   const MAX_INPUT_LENGTH = 28000;
   const NOTIFICATION_SOUND_URL = 'https://res.cloudinary.com/dy80ftu9k/video/upload/v1753917217/ding-126626_dfhzcv.mp3';
@@ -248,6 +250,7 @@ function App() {
             isLoading={isLoading}
             isFormatting={isFormatting}
             handleFormat={handleFormat}
+            onInfoIconClick={() => setIsApiKeyModalOpen(true)}
           />
         </div>
         <div className="lg:col-span-8">
@@ -276,6 +279,7 @@ function App() {
     </div>
     <TailwindSafelist />
     {isPracticesModalOpen && <BestPracticesModal onClose={() => setIsPracticesModalOpen(false)} />}
+    {isApiKeyModalOpen && <ApiKeyModal onClose={() => setIsApiKeyModalOpen(false)} />}
     {isRatingModalOpen && (
       <RatingModal
         report={ratingReport}

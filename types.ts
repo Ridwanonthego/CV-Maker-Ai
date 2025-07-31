@@ -35,6 +35,7 @@ export interface InputPanelProps {
     isLoading: boolean;
     isFormatting: boolean;
     handleFormat: () => void;
+    onInfoIconClick: () => void;
 }
 
 export interface CvDisplayProps {
@@ -72,5 +73,9 @@ export interface LogEntry {
 }
 
 export interface TipsOverlayProps {
+    onClose: () => void;
+}
+
+export interface ApiKeyModalProps {
     onClose: () => void;
 }

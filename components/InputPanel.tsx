@@ -16,14 +16,20 @@ export const InputPanel: React.FC<InputPanelProps> = ({
   handleGenerate,
   isLoading,
   isFormatting,
-  handleFormat
+  handleFormat,
+  onInfoIconClick
 }) => {
   return (
     <div className="h-full bg-white p-6 md:p-8 flex flex-col space-y-6 overflow-y-auto">
       <div className="space-y-3">
-        <label htmlFor="api-key" className="block text-sm font-bold text-gray-700">
-          Gemini API Key <span className="font-normal text-gray-500">(Required)</span>
-        </label>
+        <div className="flex items-center gap-2">
+            <label htmlFor="api-key" className="block text-sm font-bold text-gray-700">
+              Gemini API Key <span className="font-normal text-gray-500">(Required)</span>
+            </label>
+             <button onClick={onInfoIconClick} className="text-gray-400 hover:text-gray-600">
+                <Icon path="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" className="w-5 h-5 cursor-pointer" />
+            </button>
+        </div>
         <input
           type="password"
           id="api-key"
